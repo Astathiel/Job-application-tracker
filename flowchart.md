@@ -1,6 +1,6 @@
 ```mermaid
 flowchart TD
-        Start([Start the application]) -_> CheckFile{Does the data.json exist?}
+        Start([Start the application]) --> CheckFile{Does the data.json exist?}
 
         CheckFile -- Yes --> LoadData[Load existing data and display it in DataGridView]
         CheckFile -- No --> CreateEmpty([Creates an empty list])
