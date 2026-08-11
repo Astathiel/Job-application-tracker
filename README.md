@@ -51,14 +51,14 @@ The application uses a specific data model for job applications
 
 ```mermaid
 classDiagram
-    class tyohakemus {
+    class jobapplication {
         +Guid ID
-        +string YrityksenNimi
-        +string Tyonimike
-        +string Paikkakunta
-        +string Tyomuoto
-        +DateTime Hakupaiva
-        +string Tilanne
+        +string CompanyName
+        +string Role
+        +string Location
+        +string WorkingMethod
+        +DateTime ApplicationDate
+        +string Status
   }
 
 ```
