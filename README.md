@@ -4,14 +4,14 @@
 GUI for tracking ongoing job applications and their current states.
 
 ## Features
-** Data that can be saved
+### Data that can be saved
 - Company name
 - Location
 - Work form(on-site, remote, hybrid)
 - Date of the sent application
 - Status of the application
-** Data saves locally into JSON file
-** Edit saved data
+### Data saves locally into JSON file
+### Edit saved data
 
 ## Technologies
 - C# and .NET
