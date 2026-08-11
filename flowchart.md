@@ -20,4 +20,4 @@ flowchart TD
         AddToList --> SaveJson[Saves the data into data.json by overwriting existing data]
         SaveJson --> RefreshUI[Updates the DataGridView UI]
         RefreshUI --> ClearFields[Clears input fields]
-        ClearFieldss --> Idle
+        ClearFields --> Idle
