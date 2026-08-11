@@ -1,23 +1,23 @@
 ```mermaid
 flowchart TD
-    Start([Käynnistää ohjelman]) --> CheckFile{Etsii data.json}
-    CheckFile -- Kyllä --> LoadData[Lataa tallennetut tiedot taulukkoon]
-    CheckFile -- Ei --> CreateEmpty[Luo tyhjän taulukon]
+        Start([Start the application]) -_> CheckFile{Does the data.json exist?}
 
-    LoadData --> Idle([Odottaa käyttäjän toimintoa)]
-    CreateEmpty --> Idle
+        CheckFile -- Yes --> LoadData[Load existing data and display it in DataGridView]
+        CheckFile -- No --> CreateEmpty([Creates an empty list])
 
-    Idle --> ClickSave[Käyttäjä tallentaa tiedot 'Save' nappulasta]
+        LoadData --> Idle[Idles/ awaits for user input]
+        CreateEmpty --> Idle
 
-    ClickSave --> Validate{Tarkistaa onko pakolliset kentät täytetty}
+        Idle --> ClickSave[Saves user input data into data.json when 'Save' is pressed]
 
-    Validate -- Ei --> ShowError[Näyttää käyttäjälle virheilmoituksen]
+        ClickSave --> Validate[Check if required fields are filled]
 
-    ShowError --> Idle
+        Validate -- No --> ShowError[Shows user a error message if any of the required fields are empty]
+        ShowError --> Idle
 
-    Validate -- Kyllä --> CreateObject[Luo olion]
-    CreateObject --> AddToList[Lisää olion listaan]
-    AddToList --> SaveJson[Tallentaa tiedot data.json tai ylikirjoittaa olevan relevantin datan]
-    SaveJson --> RefreshIU[Päivittää taulukon]
-    RefreshUI --> ClearFields[Tyhjentää syöttökentät]
-    ClearFields --> Idle
+        Validate -- Yes --> CreateObject[Creates a new JobApplication object]
+        CreateObject --> AddToList[Adds object to the memory list]
+        AddToList --> SaveJson[Saves the data into data.json by overwriting existing data]
+        SaveJson --> RefreshUI[Updates the DataGridView UI]
+        RefreshUI --> ClearFields[Clears input fields]
+        ClearFieldss --> Idle
