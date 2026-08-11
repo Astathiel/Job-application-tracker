@@ -14,7 +14,7 @@ GUI for tracking ongoing job applications and their current states.
 * Edit saved data
 
 ## Technologies
-- C# adn .NET
+- C# and .NET
 - Windows Forms (UI)
 - JSON (Local data persistance)
 
