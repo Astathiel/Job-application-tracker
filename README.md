@@ -45,6 +45,7 @@ flowchart TD
         ClearFields --> Idle
 
 ```
+
 ### Class Diagram
 The application uses a specific data model for job applications
 
