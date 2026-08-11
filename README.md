@@ -60,3 +60,10 @@ classDiagram
         +DateTime Hakupaiva
         +string Tilanne
   }
+
+```
+
+## Project steps
+ 1. Visual Layout
+ 2. Data Managment
+ 3. Wiring the events
