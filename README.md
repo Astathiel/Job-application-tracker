@@ -44,7 +44,7 @@ flowchart TD
         RefreshUI --> ClearFields[Clears input fields]
         ClearFields --> Idle
 
-
+```
 ### Class Diagram
 The application uses a specific data model for job applications
 
