@@ -1,7 +1,7 @@
 # Job-application-tracker
 
 ## Description
-GUI for tracking ongoing job applications and their states.
+GUI for tracking ongoing job applications and their current states.
 
 ## Features
 * Data that can be saved
