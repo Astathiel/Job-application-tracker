@@ -1,3 +1,4 @@
+```mermaid
 flowchart TD
     Start([Käynnistää ohjelman]) --> CheckFile{Etsii data.json}
     CheckFile -- Kyllä --> LoadData[Lataa tallennetut tiedot taulukkoon]
