@@ -65,5 +65,8 @@ classDiagram
 
 ## Project steps
  1. Visual Layout
- 2. Data Managment
- 3. Wiring the events
+    - Build the UI.
+ 3. Data Managment
+    - Convert C# data into JSON and save it to local hard drive.
+ 5. Wiring the events
+    - Connect Forms buttons to the logic.
