@@ -1,0 +1,7 @@
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\JobApplicationTracker.Form1.resources
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\JobApplicationTracker.csproj.GenerateResource.cache
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\JobApplicationTracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\JobApplicationTracker.AssemblyInfoInputs.cache
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\JobApplicationTracker.AssemblyInfo.cs
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\JobApplicationTracker.csproj.CoreCompileInputs.cache
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\JobApplicationTracker.sourcelink.json
