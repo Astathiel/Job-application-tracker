@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lendr\\source\\repos\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj": {}
+    "C:\\Users\\Lendr\\Documents\\Repo\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lendr\\source\\repos\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj": {
+    "C:\\Users\\Lendr\\Documents\\Repo\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lendr\\source\\repos\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj",
+        "projectUniqueName": "C:\\Users\\Lendr\\Documents\\Repo\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj",
         "projectName": "JobApplicationTracker",
-        "projectPath": "C:\\Users\\Lendr\\source\\repos\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj",
+        "projectPath": "C:\\Users\\Lendr\\Documents\\Repo\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj",
         "packagesPath": "C:\\Users\\Lendr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lendr\\source\\repos\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\obj\\",
+        "outputPath": "C:\\Users\\Lendr\\Documents\\Repo\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
