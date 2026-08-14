@@ -109,7 +109,7 @@
             cmbWorkModel.Items.AddRange(new object[] { "On-site", "Remote", "Hybrid" });
             cmbWorkModel.Location = new Point(21, 132);
             cmbWorkModel.Name = "cmbWorkModel";
-            cmbWorkModel.Size = new Size(370, 33);
+            cmbWorkModel.Size = new Size(147, 33);
             cmbWorkModel.TabIndex = 7;
             cmbWorkModel.Text = "Select Option...";
             // 
@@ -125,7 +125,7 @@
             // label_application_date
             // 
             label_application_date.AutoSize = true;
-            label_application_date.Location = new Point(440, 107);
+            label_application_date.Location = new Point(225, 107);
             label_application_date.Name = "label_application_date";
             label_application_date.Size = new Size(144, 25);
             label_application_date.TabIndex = 9;
@@ -137,9 +137,9 @@
             dtpApplicationDate.CalendarTitleForeColor = SystemColors.WindowFrame;
             dtpApplicationDate.CalendarTrailingForeColor = SystemColors.WindowFrame;
             dtpApplicationDate.Format = DateTimePickerFormat.Short;
-            dtpApplicationDate.Location = new Point(440, 132);
+            dtpApplicationDate.Location = new Point(225, 132);
             dtpApplicationDate.Name = "dtpApplicationDate";
-            dtpApplicationDate.Size = new Size(320, 31);
+            dtpApplicationDate.Size = new Size(144, 31);
             dtpApplicationDate.TabIndex = 10;
             // 
             // cmbStatus
@@ -147,16 +147,16 @@
             cmbStatus.ForeColor = SystemColors.WindowText;
             cmbStatus.FormattingEnabled = true;
             cmbStatus.Items.AddRange(new object[] { "APPLIED", "PENDING", "INTERVIEW", "OFFER", "REJECTED" });
-            cmbStatus.Location = new Point(824, 132);
+            cmbStatus.Location = new Point(401, 132);
             cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(253, 33);
+            cmbStatus.Size = new Size(155, 33);
             cmbStatus.TabIndex = 11;
             cmbStatus.Text = "Select Status...";
             // 
             // label_Status
             // 
             label_Status.AutoSize = true;
-            label_Status.Location = new Point(824, 103);
+            label_Status.Location = new Point(401, 103);
             label_Status.Name = "label_Status";
             label_Status.Size = new Size(155, 25);
             label_Status.TabIndex = 12;
@@ -166,9 +166,9 @@
             // 
             btnSave.BackColor = SystemColors.Highlight;
             btnSave.ForeColor = SystemColors.ButtonHighlight;
-            btnSave.Location = new Point(1107, 132);
+            btnSave.Location = new Point(901, 120);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(111, 38);
+            btnSave.Size = new Size(317, 50);
             btnSave.TabIndex = 13;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
