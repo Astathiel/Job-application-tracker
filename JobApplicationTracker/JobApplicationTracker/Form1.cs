@@ -27,6 +27,11 @@ namespace JobApplicationTracker
             this.BackColor = Color.White;
             this.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular);
 
+            // Placeholder text for the input fields to guide the user
+            txtCompanyName.PlaceholderText = "e.g. Stripe, Inc.";
+            txtJobTitle.PlaceholderText = "e.g. Junior Developer";
+            txtLocation.PlaceholderText = "e.g. Tampere, Helsinki or Remote";
+
             // Loop through all controls in the form and apply styles based on their type
             foreach (Control control in this.Controls)
             {
@@ -111,6 +116,7 @@ namespace JobApplicationTracker
         {
             dgvApplications.DataSource = null;
             dgvApplications.DataSource = applications;
+            lblTotalCount.Text = $"{applications.Count} Applications Total";
         }
 
         // Method to clear the input fields in the form1 after saving a job application
