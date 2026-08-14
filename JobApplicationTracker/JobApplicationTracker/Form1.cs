@@ -65,6 +65,7 @@ namespace JobApplicationTracker
             dgvApplications.RowHeadersVisible = false;
             dgvApplications.AllowUserToResizeRows = false;
             dgvApplications.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvApplications.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             dgvApplications.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvApplications.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
@@ -120,6 +121,17 @@ namespace JobApplicationTracker
             dgvApplications.DataSource = null;
             dgvApplications.DataSource = applications;
             lblTotalCount.Text = $"{applications.Count} Applications Total";
+
+            // Set the column headers for better readability
+            if (dgvApplications.Columns["CompanyName"] != null)
+            {
+                dgvApplications.Columns["CompanyName"].HeaderText = "Company Name";
+                dgvApplications.Columns["JobTitle"].HeaderText = "Role / Title";
+                dgvApplications.Columns["Location"].HeaderText = "Location";
+                dgvApplications.Columns["WorkModel"].HeaderText = "Working Method";
+                dgvApplications.Columns["ApplicationDate"].HeaderText = "Date";
+                dgvApplications.Columns["Status"].HeaderText = "Status";
+            }
         }
 
         // Method to clear the input fields in the form1 after saving a job application
