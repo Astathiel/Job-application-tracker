@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JobApplicationTracker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54e8e1ba48ab4dad70ada44033e57f17fff81141")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5eadc62d28836bd2828f304b66b037d36f0d5d5")]
 [assembly: System.Reflection.AssemblyProductAttribute("JobApplicationTracker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JobApplicationTracker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

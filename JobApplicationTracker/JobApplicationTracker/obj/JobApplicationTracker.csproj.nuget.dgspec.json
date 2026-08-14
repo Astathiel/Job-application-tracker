@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Portofolio_projects\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj": {}
+    "C:\\Users\\Lendr\\Documents\\Repo\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj": {}
   },
   "projects": {
-    "D:\\Portofolio_projects\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj": {
+    "C:\\Users\\Lendr\\Documents\\Repo\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Portofolio_projects\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj",
+        "projectUniqueName": "C:\\Users\\Lendr\\Documents\\Repo\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj",
         "projectName": "JobApplicationTracker",
-        "projectPath": "D:\\Portofolio_projects\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj",
+        "projectPath": "C:\\Users\\Lendr\\Documents\\Repo\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\JobApplicationTracker.csproj",
         "packagesPath": "C:\\Users\\Lendr\\.nuget\\packages\\",
-        "outputPath": "D:\\Portofolio_projects\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\obj\\",
+        "outputPath": "C:\\Users\\Lendr\\Documents\\Repo\\Astathiel\\Job-application-tracker\\JobApplicationTracker\\JobApplicationTracker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\Lendr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -26,12 +26,10 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0-windows": {
-            "framework": "net8.0-windows7.0",
+          "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {}
           }
@@ -46,11 +44,10 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.400"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net8.0-windows": {
-          "framework": "net8.0-windows7.0",
+        "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "imports": [
             "net461",
@@ -71,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.317/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
