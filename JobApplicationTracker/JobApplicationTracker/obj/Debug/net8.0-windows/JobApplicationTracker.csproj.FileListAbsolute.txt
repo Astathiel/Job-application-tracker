@@ -5,3 +5,13 @@ C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTr
 C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\JobApplicationTracker.AssemblyInfo.cs
 C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\JobApplicationTracker.csproj.CoreCompileInputs.cache
 C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\JobApplicationTracker.sourcelink.json
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\bin\Debug\net8.0-windows\JobApplicationTracker.exe
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\bin\Debug\net8.0-windows\JobApplicationTracker.deps.json
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\bin\Debug\net8.0-windows\JobApplicationTracker.runtimeconfig.json
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\bin\Debug\net8.0-windows\JobApplicationTracker.dll
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\bin\Debug\net8.0-windows\JobApplicationTracker.pdb
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\JobApplicationTracker.dll
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\refint\JobApplicationTracker.dll
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\JobApplicationTracker.pdb
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\JobApplicationTracker.genruntimeconfig.cache
+C:\Users\Lendr\Documents\Repo\Astathiel\Job-application-tracker\JobApplicationTracker\JobApplicationTracker\obj\Debug\net8.0-windows\ref\JobApplicationTracker.dll

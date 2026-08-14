@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TextBox txtCompanyName;
             label_add_new_application = new Label();
             label_company_name = new Label();
             label_role = new Label();
@@ -48,14 +47,6 @@
             txtCompanyName = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvApplications).BeginInit();
             SuspendLayout();
-            // 
-            // txtCompanyName
-            // 
-            txtCompanyName.ForeColor = SystemColors.WindowFrame;
-            txtCompanyName.Location = new Point(21, 63);
-            txtCompanyName.Name = "txtCompanyName";
-            txtCompanyName.Size = new Size(430, 31);
-            txtCompanyName.TabIndex = 1;
             // 
             // label_add_new_application
             // 
@@ -210,11 +201,19 @@
             label1.TabIndex = 16;
             label1.Text = "All changes saved locally";
             // 
+            // txtCompanyName
+            // 
+            txtCompanyName.Location = new Point(22, 64);
+            txtCompanyName.Name = "txtCompanyName";
+            txtCompanyName.Size = new Size(408, 31);
+            txtCompanyName.TabIndex = 17;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1259, 663);
+            Controls.Add(txtCompanyName);
             Controls.Add(label1);
             Controls.Add(lblTotalCount);
             Controls.Add(dgvApplications);
@@ -230,7 +229,6 @@
             Controls.Add(txtJobTitle);
             Controls.Add(label_role);
             Controls.Add(label_company_name);
-            Controls.Add(txtCompanyName);
             Controls.Add(label_add_new_application);
             Name = "Form1";
             Text = "Form1";
@@ -257,5 +255,6 @@
         private DataGridView dgvApplications;
         private Label lblTotalCount;
         private Label label1;
+        private TextBox txtCompanyName;
     }
 }
