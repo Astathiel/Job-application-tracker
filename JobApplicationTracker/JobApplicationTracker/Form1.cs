@@ -18,6 +18,7 @@ namespace JobApplicationTracker
             InitializeComponent();
             ApplyModernStyles();
             LoadData();
+            btnSave.Click += BtnSave_Click;
         }
 
         // Method to apply modern styles to the form and its controls
