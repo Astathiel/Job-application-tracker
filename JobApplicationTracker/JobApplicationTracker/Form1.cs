@@ -26,6 +26,8 @@ namespace JobApplicationTracker
             // Set the form's background color and font
             this.BackColor = Color.White;
             this.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular);
+            // Sets the form window name
+            this.Text = "Job Application Tracker";
 
             // Placeholder text for the input fields to guide the user
             txtCompanyName.PlaceholderText = "e.g. Stripe, Inc.";

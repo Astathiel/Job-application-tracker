@@ -104,9 +104,9 @@
             // 
             // cmbWorkModel
             // 
-            cmbWorkModel.ForeColor = SystemColors.WindowFrame;
+            cmbWorkModel.ForeColor = SystemColors.WindowText;
             cmbWorkModel.FormattingEnabled = true;
-            cmbWorkModel.Items.AddRange(new object[] { "On-site, Remote, Hybrid" });
+            cmbWorkModel.Items.AddRange(new object[] { "On-site", "Remote", "Hybrid" });
             cmbWorkModel.Location = new Point(21, 132);
             cmbWorkModel.Name = "cmbWorkModel";
             cmbWorkModel.Size = new Size(370, 33);
@@ -144,9 +144,9 @@
             // 
             // cmbStatus
             // 
-            cmbStatus.ForeColor = SystemColors.WindowFrame;
+            cmbStatus.ForeColor = SystemColors.WindowText;
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Items.AddRange(new object[] { "APPLIED, PENDING, INTERVIEW, OFFER, REJECTED" });
+            cmbStatus.Items.AddRange(new object[] { "APPLIED", "PENDING", "INTERVIEW", "OFFER", "REJECTED" });
             cmbStatus.Location = new Point(824, 132);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(253, 33);
