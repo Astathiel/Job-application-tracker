@@ -185,6 +185,7 @@
             // 
             // lblTotalCount
             // 
+            lblTotalCount.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblTotalCount.AutoSize = true;
             lblTotalCount.Location = new Point(20, 640);
             lblTotalCount.Name = "lblTotalCount";
@@ -194,6 +195,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Location = new Point(1011, 640);
             label1.Name = "label1";
