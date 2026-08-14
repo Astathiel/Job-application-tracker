@@ -1,17 +1,28 @@
 # Job Application Tracker
 
 ## Project Overview
-A Windows Forms desktop application designed to track job applications using a modern, minimalistic user interface and local JSON storage. 
+A Windows Forms desktop application designed to track job applications using a modern, minimalistic user interface and local JSON storage.
 
 ## Progress Log
 
-### Step 1: Initial Form and Data Persistence
+### Step 1: Core Foundation & Data Persistence (Completed)
 * **Data Model:** Created the `JobApplication` class to define the data structure (Company Name, Job Title, Location, Work Model, Application Date, Status).
 * **Storage System:** Implemented a static `DataManager` class utilizing `System.Text.Json` to serialize and deserialize application data to a local `data.json` file.
 * **User Interface:** Designed a top-and-bottom layout featuring input fields and a data grid.
 * **Programmatic Styling:** Bypassed default Windows Forms 3D visual styles using a centralized `ApplyModernStyles` method to achieve a flat, minimalistic aesthetic (white background, flat borders, custom data grid rendering, and dynamic footer counts).
 * **Data Binding:** Connected the frontend inputs to the backend logic, allowing the application to save new entries to the JSON file, load existing entries on startup, and refresh the UI ledger.
+* **Window Title:** Updated the main application window title to reflect the project name.
 
-### Pending Steps
-* Step 2: Add edit and delete buttons.
-* Step 3: Add sort and filter buttons.
+### Step 2: Modification & Deletion (Pending)
+* **UI Integration:** Programmatically inject flat, styled "Edit" and "Delete" button columns directly into the data table rows.
+* **State Memory:** Introduce a tracking variable to the form to remember if the user is currently updating an existing application or creating a brand new one.
+* **Event Logic:** Wire up a cell-click event so that clicking "Delete" removes the entry and rewrites the JSON, while clicking "Edit" pulls the row's data back into the top input fields for modification.
+
+### Step 3: Data Organization (Pending)
+* **User Interface:** Build and style Sort and Filter buttons.
+* **Backend Logic:** Implement logic to arrange the data grid by criteria (e.g., Application Date, Status) and hide rows that do not match the selected filters.
+
+### Step 4: Layout Polish, Dark Mode & Directory Management (Pending)
+* **Directory Management:** Update the `DataManager` to automatically generate an "Applications" folder to safely house the `data.json` file.
+* **Table Readability:** Command the `DataGridView` to auto-size its columns to fill the entire window width, and manually override the header text for improved readability.
+* **Theme Manager:** Create a dedicated `ThemeManager` class utilizing Object-Oriented Programming (OOP) principles to handle the swapping of Light and Dark color palettes, keeping the main form clean and modular.
