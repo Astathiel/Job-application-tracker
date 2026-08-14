@@ -10,8 +10,9 @@ namespace JobApplicationTracker
     // Static class so it is accessible without instantiation
     public static class DataManager
     {
-        // File path for storing the job applications data (Makes an Applications folder if it doesn't exist)
-        private static readonly string FolderPath = "Applications";
+        // Define the base path, folder path, and file path for storing the JSON data
+        private static readonly string BasePath = AppDomain.CurrentDomain.BaseDirectory;
+        private static readonly string FolderPath = Path.Combine(BasePath, "Applications");
         private static readonly string FilePath = Path.Combine(FolderPath, "data.json");
 
         // Method to save the list of job applications to a JSON file (Void runs without returning anything)
