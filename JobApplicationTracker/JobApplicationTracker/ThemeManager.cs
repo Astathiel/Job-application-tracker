@@ -7,11 +7,13 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Security.Cryptography.X509Certificates;
 using System.Reflection;
+// Necessary Libraries
 
 namespace JobApplicationTracker
 {
     public static class ThemeManager
     {
+        // Property to track the current theme mode (dark or light)
         public static bool IsDarkMode { get; private set; } = false;
 
         private static Image imgDark;
@@ -19,6 +21,7 @@ namespace JobApplicationTracker
 
         static ThemeManager()
         {
+            // Load the embedded images for the theme toggle button
             var assembly = Assembly.GetExecutingAssembly();
 
             string[] allResources = assembly.GetManifestResourceNames();
@@ -30,11 +33,13 @@ namespace JobApplicationTracker
             if (lightPath != null) imgLight = Image.FromStream(assembly.GetManifestResourceStream(lightPath));
         }
 
+        // Set the theme to opposite of the current mode (dark to light or light to dark)
         public static void ToggleTheme()
         {
             IsDarkMode = !IsDarkMode;
         }
 
+        // Dark and Light mode color schemes for the application
         public static void ApplyTheme(Form form)
         {
             Color backColor = IsDarkMode ? Color.FromArgb(30, 30, 30) : Color.White;
@@ -47,6 +52,7 @@ namespace JobApplicationTracker
             form.BackColor = backColor;
             form.ForeColor = foreColor;
 
+            // Loop through all controls in the form and apply the appropriate colors and styles based on their type
             foreach (Control control in form.Controls)
             {
                 if (control is TextBox textBox)
