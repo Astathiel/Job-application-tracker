@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 // Necessary Libraries
@@ -66,6 +67,7 @@ namespace JobApplicationTracker
             dgvApplications.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvApplications.RowHeadersVisible = false;
             dgvApplications.AllowUserToResizeRows = false;
+            dgvApplications.AllowUserToOrderColumns = false;
             dgvApplications.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvApplications.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -74,6 +76,10 @@ namespace JobApplicationTracker
             dgvApplications.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             dgvApplications.ColumnHeadersHeight = 40;
             dgvApplications.RowTemplate.Height = 40;
+
+            dgvApplications.ColumnHeadersDefaultCellStyle.SelectionBackColor = dgvApplications.ColumnHeadersDefaultCellStyle.BackColor;
+            dgvApplications.ColumnHeadersDefaultCellStyle.SelectionForeColor = dgvApplications.ColumnHeadersDefaultCellStyle.ForeColor;
+
 
             if (!dgvApplications.Columns.Contains("EditColumn"))
             {
@@ -105,19 +111,41 @@ namespace JobApplicationTracker
         {
             if (e.RowIndex >= 0)
             {
-                if (dgvApplications.Columns[e.ColumnIndex].Name == "DeleteColumn")
+                // Check if your grid is bound to a list (e.g., BindingList<JobApplication>)
+                if (dgvApplications.DataSource is BindingList<JobApplication> list)
                 {
-                    dgvApplications.Rows.RemoveAt(e.RowIndex);
+                    if (dgvApplications.Columns[e.ColumnIndex].Name == "DeleteColumn")
+                    {
+                        list.RemoveAt(e.RowIndex);
+                    }
+                    else if (dgvApplications.Columns[e.ColumnIndex].Name == "EditColumn")
+                    {
+                        JobApplication app = list[e.RowIndex];
+
+                        txtCompanyName.Text = app.CompanyName;
+                        txtJobTitle.Text = app.JobTitle;
+                        txtLocation.Text = app.Location;
+
+                        list.RemoveAt(e.RowIndex);
+                    }
                 }
-                else if (dgvApplications.Columns[e.ColumnIndex].Name == "EditColumn")
+                else
                 {
-                    DataGridViewRow row = dgvApplications.Rows[e.RowIndex];
+                    
+                    if (dgvApplications.Columns[e.ColumnIndex].Name == "DeleteColumn")
+                    {
+                        dgvApplications.Rows.RemoveAt(e.RowIndex);
+                    }
+                    else if (dgvApplications.Columns[e.ColumnIndex].Name == "EditColumn")
+                    {
+                        DataGridViewRow row = dgvApplications.Rows[e.RowIndex];
 
-                    txtCompanyName.Text = row.Cells[0].Value?.ToString();
-                    txtJobTitle.Text = row.Cells[1].Value?.ToString();
-                    txtLocation.Text = row.Cells[2].Value?.ToString();
+                        txtCompanyName.Text = row.Cells[0].Value?.ToString();
+                        txtJobTitle.Text = row.Cells[1].Value?.ToString();
+                        txtLocation.Text = row.Cells[2].Value?.ToString();
 
-                    dgvApplications.Rows.RemoveAt(e.RowIndex);
+                        dgvApplications.Rows.RemoveAt(e.RowIndex);
+                    }
                 }
             }
         }
