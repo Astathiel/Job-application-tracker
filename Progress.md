@@ -5,6 +5,10 @@ A Windows Forms desktop application designed to track job applications using a m
 
 ## Progress Log
 
+### Pre-Start Log: UI/UX Design (Completed)
+* **Design Phase:** Conceptualized and designed the application interface using Figma before to development.
+* **Blueprint Creation:** Exported the final minimalistic layout as `JobApplicationTracker_Minimalistic.pdf` to serve as the visual and structural reference for the C# Windows Forms styling.
+
 ### Step 1: Core Foundation & Data Persistence (Completed)
 * **Data Model:** Created the `JobApplication` class to define the data structure (Company Name, Job Title, Location, Work Model, Application Date, Status).
 * **Storage System:** Implemented a static `DataManager` class utilizing `System.Text.Json` to serialize and deserialize application data to a local `data.json` file.
