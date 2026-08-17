@@ -45,6 +45,7 @@
             lblTotalCount = new Label();
             label1 = new Label();
             txtCompanyName = new TextBox();
+            btnThemeToggle = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvApplications).BeginInit();
             SuspendLayout();
             // 
@@ -210,11 +211,20 @@
             txtCompanyName.Size = new Size(408, 31);
             txtCompanyName.TabIndex = 17;
             // 
+            // btnThemeToggle
+            // 
+            btnThemeToggle.Location = new Point(1164, 8);
+            btnThemeToggle.Name = "btnThemeToggle";
+            btnThemeToggle.Size = new Size(54, 44);
+            btnThemeToggle.TabIndex = 18;
+            btnThemeToggle.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1259, 663);
+            Controls.Add(btnThemeToggle);
             Controls.Add(txtCompanyName);
             Controls.Add(label1);
             Controls.Add(lblTotalCount);
@@ -258,5 +268,6 @@
         private Label lblTotalCount;
         private Label label1;
         private TextBox txtCompanyName;
+        private Button btnThemeToggle;
     }
 }

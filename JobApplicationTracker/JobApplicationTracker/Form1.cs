@@ -17,25 +17,31 @@ namespace JobApplicationTracker
             // Initialize the form components, load json data, and apply modern styles
             InitializeComponent();
             ApplyModernStyles();
+            // Apply initial default theme(light mode)
+            ThemeManager.ApplyTheme(this);
             LoadData();
             btnSave.Click += BtnSave_Click;
+            btnThemeToggle.Click += BtnThemeToggle_Click;
         }
 
         // Method to apply modern styles to the form and its controls
         private void ApplyModernStyles()
         {
-            // Set the form's background color and font
-            this.BackColor = Color.White;
             this.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular);
-            // Sets the form window name
             this.Text = "Job Application Tracker";
 
-            // Placeholder text for the input fields to guide the user
+            // Set placeholder text for the input fields
             txtCompanyName.PlaceholderText = "e.g. Stripe, Inc.";
             txtJobTitle.PlaceholderText = "e.g. Junior Developer";
             txtLocation.PlaceholderText = "e.g. Tampere, Helsinki or Remote";
 
-            // Loop through all controls in the form and apply styles based on their type
+            
+            btnThemeToggle.Text = "";
+            btnThemeToggle.ImageAlign = ContentAlignment.MiddleCenter;
+            btnThemeToggle.Cursor = Cursors.Hand;
+
+
+            // iterate through all controls in the form and apply styles based on their type
             foreach (Control control in this.Controls)
             {
                 if (control is TextBox textBox)
@@ -48,36 +54,33 @@ namespace JobApplicationTracker
                 }
             }
 
-            // Style the Save button with a flat appearance and custom colors
+            // Set properties for the Save button
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.FlatAppearance.BorderSize = 0;
-            btnSave.BackColor = Color.FromArgb(33, 33, 33);
-            btnSave.ForeColor = Color.White;
             btnSave.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnSave.Cursor = Cursors.Hand;
 
-            // Style the DataGridView for a modern look
+            // Set properties for the DataGridView to make it look clean
             dgvApplications.EnableHeadersVisualStyles = false;
-            dgvApplications.BackgroundColor = Color.White;
             dgvApplications.BorderStyle = BorderStyle.None;
             dgvApplications.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvApplications.GridColor = Color.FromArgb(230, 230, 230);
             dgvApplications.RowHeadersVisible = false;
             dgvApplications.AllowUserToResizeRows = false;
             dgvApplications.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvApplications.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            // Set the header style for the DataGridView
             dgvApplications.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvApplications.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
-            dgvApplications.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(100, 100, 100);
             dgvApplications.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             dgvApplications.ColumnHeadersHeight = 40;
 
-            dgvApplications.DefaultCellStyle.BackColor = Color.White;
-            dgvApplications.DefaultCellStyle.ForeColor = Color.Black;
-            dgvApplications.DefaultCellStyle.SelectionBackColor = Color.FromArgb(245, 245, 245);
-            dgvApplications.DefaultCellStyle.SelectionForeColor = Color.Black;
             dgvApplications.RowTemplate.Height = 40;
+        }
+
+        private void BtnThemeToggle_Click(object sender, EventArgs e)
+        {
+            ThemeManager.ToggleTheme();
+            ThemeManager.ApplyTheme(this);
         }
 
         // Method to load job applications from the JSON file and refresh the DataGridView
