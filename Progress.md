@@ -35,10 +35,12 @@ A Windows Forms desktop application designed to track job applications using a m
 
 **Total Time Spent:** [Total Hours] hours
 
-### Daily Time Tracking
+## Time Investment Log
 
-| Date | Development Phase / Tasks Completed | Hours Spent |
-| :18h |
+**Total Time Spent:** [18] hours
+
+| Date         | Development Phase / Tasks Completed                                     | Hours Spent |
+|--------------|-------------------------------------------------------------------------|-------------|
 | [11.08.2026] | Pre-Start: Decide the project theme. Create github repository to track the project. Create class Diagram
                  and flowchart. | [3h] |
 | [13.08.2026] | Pre-Start: Figma UI/UX prototyping and blueprint creation | [5h] |
