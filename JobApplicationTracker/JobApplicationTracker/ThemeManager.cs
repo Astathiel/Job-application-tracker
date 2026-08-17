@@ -6,13 +6,29 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Security.Cryptography.X509Certificates;
-// Import libraries and UI elements
+using System.Reflection;
 
 namespace JobApplicationTracker
 {
     public static class ThemeManager
     {
         public static bool IsDarkMode { get; private set; } = false;
+
+        private static Image imgDark;
+        private static Image imgLight;
+
+        static ThemeManager()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            string[] allResources = assembly.GetManifestResourceNames();
+
+            string darkPath = allResources.FirstOrDefault(r => r.EndsWith("ToggleDark.png"));
+            string lightPath = allResources.FirstOrDefault(r => r.EndsWith("ToggleLight.png"));
+
+            if (darkPath != null) imgDark = Image.FromStream(assembly.GetManifestResourceStream(darkPath));
+            if (lightPath != null) imgLight = Image.FromStream(assembly.GetManifestResourceStream(lightPath));
+        }
 
         public static void ToggleTheme()
         {
@@ -58,7 +74,9 @@ namespace JobApplicationTracker
 
                     if (button.Name == "btnThemeToggle")
                     {
-                        button.Image = IsDarkMode ? UIResources.ToggleDark : UIResources.ToggleLight;
+                        button.Image = null;
+                        button.BackgroundImage = IsDarkMode ? imgDark : imgLight;
+                        button.BackgroundImageLayout = ImageLayout.Zoom;
                         button.BackColor = backColor;
                     }
                 }
