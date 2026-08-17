@@ -8,6 +8,7 @@ namespace JobApplicationTracker
 {
     public class JobApplication
     {
+        // Properties to hold the details of a job application
         public string CompanyName { get; set; }
         public string JobTitle { get; set; }
         public string Location { get; set; }
