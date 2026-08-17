@@ -73,8 +73,53 @@ namespace JobApplicationTracker
             dgvApplications.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvApplications.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             dgvApplications.ColumnHeadersHeight = 40;
-
             dgvApplications.RowTemplate.Height = 40;
+
+            if (!dgvApplications.Columns.Contains("EditColumn"))
+            {
+                DataGridViewImageColumn editCol = new DataGridViewImageColumn();
+                editCol.Name = "EditColumn";
+                editCol.HeaderText = "";
+                editCol.Width = 35;
+                editCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                editCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                dgvApplications.Columns.Add(editCol);
+            }
+
+            if (!dgvApplications.Columns.Contains("DeleteColumn"))
+            {
+                DataGridViewImageColumn delCol = new DataGridViewImageColumn();
+                delCol.Name = "DeleteColumn";
+                delCol.HeaderText = "";
+                delCol.Width = 35;
+                delCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                delCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                dgvApplications.Columns.Add(delCol);
+            }
+
+            dgvApplications.CellContentClick -= dgvApplications_CellContentClick;
+            dgvApplications.CellContentClick += dgvApplications_CellContentClick;
+        }
+
+        private void dgvApplications_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (dgvApplications.Columns[e.ColumnIndex].Name == "DeleteColumn")
+                {
+                    dgvApplications.Rows.RemoveAt(e.RowIndex);
+                }
+                else if (dgvApplications.Columns[e.ColumnIndex].Name == "EditColumn")
+                {
+                    DataGridViewRow row = dgvApplications.Rows[e.RowIndex];
+
+                    txtCompanyName.Text = row.Cells[0].Value?.ToString();
+                    txtJobTitle.Text = row.Cells[1].Value?.ToString();
+                    txtLocation.Text = row.Cells[2].Value?.ToString();
+
+                    dgvApplications.Rows.RemoveAt(e.RowIndex);
+                }
+            }
         }
 
         private void BtnThemeToggle_Click(object sender, EventArgs e)
