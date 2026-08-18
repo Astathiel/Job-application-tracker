@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 // Necessary Libraries
@@ -10,7 +9,6 @@ namespace JobApplicationTracker
     // Main Form for the Job Application Tracker
     public partial class Form1 : Form
     {
-        // List to hold the job applications in memory
         private List<JobApplication> applications;
 
         public Form1()
@@ -36,11 +34,9 @@ namespace JobApplicationTracker
             txtJobTitle.PlaceholderText = "e.g. Junior Developer";
             txtLocation.PlaceholderText = "e.g. Tampere, Helsinki or Remote";
 
-            
             btnThemeToggle.Text = "";
             btnThemeToggle.ImageAlign = ContentAlignment.MiddleCenter;
             btnThemeToggle.Cursor = Cursors.Hand;
-
 
             // iterate through all controls in the form and apply styles based on their type
             foreach (Control control in this.Controls)
@@ -61,6 +57,7 @@ namespace JobApplicationTracker
             btnSave.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnSave.Cursor = Cursors.Hand;
 
+
             // Set properties for the DataGridView to make it look clean
             dgvApplications.EnableHeadersVisualStyles = false;
             dgvApplications.BorderStyle = BorderStyle.None;
@@ -80,28 +77,54 @@ namespace JobApplicationTracker
             dgvApplications.ColumnHeadersDefaultCellStyle.SelectionBackColor = dgvApplications.ColumnHeadersDefaultCellStyle.BackColor;
             dgvApplications.ColumnHeadersDefaultCellStyle.SelectionForeColor = dgvApplications.ColumnHeadersDefaultCellStyle.ForeColor;
 
+            dgvApplications.AutoGenerateColumns = false;
+            dgvApplications.Columns.Clear();
 
-            if (!dgvApplications.Columns.Contains("EditColumn"))
-            {
-                DataGridViewImageColumn editCol = new DataGridViewImageColumn();
-                editCol.Name = "EditColumn";
-                editCol.HeaderText = "";
-                editCol.Width = 35;
-                editCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                editCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                dgvApplications.Columns.Add(editCol);
-            }
+            DataGridViewTextBoxColumn colCompany = new DataGridViewTextBoxColumn();
+            colCompany.DataPropertyName = "CompanyName";
+            colCompany.HeaderText = "Company Name";
+            dgvApplications.Columns.Add(colCompany);
 
-            if (!dgvApplications.Columns.Contains("DeleteColumn"))
-            {
-                DataGridViewImageColumn delCol = new DataGridViewImageColumn();
-                delCol.Name = "DeleteColumn";
-                delCol.HeaderText = "";
-                delCol.Width = 35;
-                delCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                delCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                dgvApplications.Columns.Add(delCol);
-            }
+            DataGridViewTextBoxColumn colTitle = new DataGridViewTextBoxColumn();
+            colTitle.DataPropertyName = "JobTitle";
+            colTitle.HeaderText = "Role / Title";
+            dgvApplications.Columns.Add(colTitle);
+
+            DataGridViewTextBoxColumn colLocation = new DataGridViewTextBoxColumn();
+            colLocation.DataPropertyName = "Location";
+            colLocation.HeaderText = "Location";
+            dgvApplications.Columns.Add(colLocation);
+
+            DataGridViewTextBoxColumn colMethod = new DataGridViewTextBoxColumn();
+            colMethod.DataPropertyName = "WorkModel";
+            colMethod.HeaderText = "Working Method";
+            dgvApplications.Columns.Add(colMethod);
+
+            DataGridViewTextBoxColumn colDate = new DataGridViewTextBoxColumn();
+            colDate.DataPropertyName = "ApplicationDate";
+            colDate.HeaderText = "Date";
+            dgvApplications.Columns.Add(colDate);
+
+            DataGridViewTextBoxColumn colStatus = new DataGridViewTextBoxColumn();
+            colStatus.DataPropertyName = "Status";
+            colStatus.HeaderText = "Status";
+            dgvApplications.Columns.Add(colStatus);
+
+            DataGridViewImageColumn editCol = new DataGridViewImageColumn();
+            editCol.Name = "EditColumn";
+            editCol.HeaderText = "";
+            editCol.Width = 35;
+            editCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            editCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            dgvApplications.Columns.Add(editCol);
+
+            DataGridViewImageColumn delCol = new DataGridViewImageColumn();
+            delCol.Name = "DeleteColumn";
+            delCol.HeaderText = "";
+            delCol.Width = 35;
+            delCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            delCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            dgvApplications.Columns.Add(delCol);
 
             dgvApplications.CellContentClick -= dgvApplications_CellContentClick;
             dgvApplications.CellContentClick += dgvApplications_CellContentClick;
@@ -111,40 +134,27 @@ namespace JobApplicationTracker
         {
             if (e.RowIndex >= 0)
             {
-                // Check if your grid is bound to a list (e.g., BindingList<JobApplication>)
-                if (dgvApplications.DataSource is BindingList<JobApplication> list)
+                string colName = dgvApplications.Columns[e.ColumnIndex].Name;
+
+                if (colName == "DeleteColumn" || colName == "EditColumn")
                 {
-                    if (dgvApplications.Columns[e.ColumnIndex].Name == "DeleteColumn")
-                    {
-                        list.RemoveAt(e.RowIndex);
-                    }
-                    else if (dgvApplications.Columns[e.ColumnIndex].Name == "EditColumn")
-                    {
-                        JobApplication app = list[e.RowIndex];
+                    var app = dgvApplications.Rows[e.RowIndex].DataBoundItem as JobApplication;
 
-                        txtCompanyName.Text = app.CompanyName;
-                        txtJobTitle.Text = app.JobTitle;
-                        txtLocation.Text = app.Location;
-
-                        list.RemoveAt(e.RowIndex);
-                    }
-                }
-                else
-                {
-                    
-                    if (dgvApplications.Columns[e.ColumnIndex].Name == "DeleteColumn")
+                    if (app != null)
                     {
-                        dgvApplications.Rows.RemoveAt(e.RowIndex);
-                    }
-                    else if (dgvApplications.Columns[e.ColumnIndex].Name == "EditColumn")
-                    {
-                        DataGridViewRow row = dgvApplications.Rows[e.RowIndex];
+                        if (colName == "EditColumn")
+                        {
+                            txtCompanyName.Text = app.CompanyName;
+                            txtJobTitle.Text = app.JobTitle;
+                            txtLocation.Text = app.Location;
+                            cmbWorkModel.Text = app.WorkModel;
+                            cmbStatus.Text = app.Status;
+                            dtpApplicationDate.Value = app.ApplicationDate;
+                        }
 
-                        txtCompanyName.Text = row.Cells[0].Value?.ToString();
-                        txtJobTitle.Text = row.Cells[1].Value?.ToString();
-                        txtLocation.Text = row.Cells[2].Value?.ToString();
-
-                        dgvApplications.Rows.RemoveAt(e.RowIndex);
+                        applications.Remove(app);
+                        DataManager.SaveApplications(applications);
+                        RefreshGrid();
                     }
                 }
             }
@@ -197,17 +207,6 @@ namespace JobApplicationTracker
             dgvApplications.DataSource = null;
             dgvApplications.DataSource = applications;
             lblTotalCount.Text = $"{applications.Count} Applications Total";
-
-            // Set the column headers for better readability
-            if (dgvApplications.Columns["CompanyName"] != null)
-            {
-                dgvApplications.Columns["CompanyName"].HeaderText = "Company Name";
-                dgvApplications.Columns["JobTitle"].HeaderText = "Role / Title";
-                dgvApplications.Columns["Location"].HeaderText = "Location";
-                dgvApplications.Columns["WorkModel"].HeaderText = "Working Method";
-                dgvApplications.Columns["ApplicationDate"].HeaderText = "Date";
-                dgvApplications.Columns["Status"].HeaderText = "Status";
-            }
         }
 
         // Method to clear the input fields in the form1 after saving a job application
