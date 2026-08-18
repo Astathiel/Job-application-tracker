@@ -33,7 +33,7 @@ A Windows Forms desktop application designed to track job applications using a m
 
 ## Time Investment Log
 
-**Total Time Spent:** [26] hours
+**Total Time Spent:** [31] hours
 
 | Date         | Development Phase / Tasks Completed                                     | Hours Spent |
 |--------------|-------------------------------------------------------------------------|-------------|
@@ -43,4 +43,4 @@ A Windows Forms desktop application designed to track job applications using a m
 | [14.08.2026] | Step 4 (Partial): Directory management anchoring and table readability polish | [4h] |
 | [17.08.2026] | Step 4 (Partial): ThemeManager OOP class creation | [3h] |
 | [18.08.2026] | Step 4 (Completed): Dark Mode toggle finalization, embedded grid icons, and Edit/Delete JSON syncing. | [5h] |
-| [18.08.2026] | Step 5 (In progress): Sort and Filter functions | [X.X] |
+| [18.08.2026] | Step 5 (In progress): Sort and Filter functions | [5] |
