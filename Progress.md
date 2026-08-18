@@ -22,25 +22,25 @@ A Windows Forms desktop application designed to track job applications using a m
 * **State Memory:** Introduce a tracking variable to the form to remember if the user is currently updating an existing application or creating a brand new one.
 * **Event Logic:** Wire up a cell-click event so that clicking "Delete" removes the entry and rewrites the JSON, while clicking "Edit" pulls the row's data back into the top input fields for modification.
 
-### Step 3: Data Organization (Pending)
-* **User Interface:** Build and style Sort and Filter buttons.
-* **Backend Logic:** Implement logic to arrange the data grid by criteria (e.g., Application Date, Status) and hide rows that do not match the selected filters.
+### Step 3: Data Organization (Completed)
+* **User Interface:** Built and styled a dynamic filtering popup menu and enabled column header clicking for sorting.
+* **Backend Logic:** Implemented the "Vault and View" architecture using C# LINQ to arrange the data grid by criteria and hide rows that do not match the selected filters without permanently modifying the master JSON file.
 
-### Step 4: Layout Polish, Dark Mode & Directory Management (Pending)
+### Step 4: Layout Polish, Dark Mode & Directory Management (Completed)
 * **Directory Management:** Update the `DataManager` to automatically generate an "Applications" folder to safely house the `data.json` file.
 * **Table Readability:** Command the `DataGridView` to auto-size its columns to fill the entire window width, and manually override the header text for improved readability.
 * **Theme Manager:** Create a dedicated `ThemeManager` class utilizing Object-Oriented Programming (OOP) principles to handle the swapping of Light and Dark color palettes, keeping the main form clean and modular.
 
 ## Time Investment Log
 
-**Total Time Spent:** [31] hours
+**Total Time Spent:** 20 hours
 
-| Date         | Development Phase / Tasks Completed                                     | Hours Spent |
-|--------------|-------------------------------------------------------------------------|-------------|
-| [11.08.2026] | Pre-Start: Decide the project theme. Create github repository to track the project. Create class Diagram and flowchart.                                     |     [3h]    |
-| [13.08.2026] | Pre-Start: Figma UI/UX prototyping and blueprint creation | [5h] |
-| [13.08.2026] | Step 1: Initial form setup, JSON storage integration, and data binding | [6h] |
-| [14.08.2026] | Step 4 (Partial): Directory management anchoring and table readability polish | [4h] |
-| [17.08.2026] | Step 4 (Partial): ThemeManager OOP class creation | [3h] |
-| [18.08.2026] | Step 4 (Completed): Dark Mode toggle finalization, embedded grid icons, and Edit/Delete JSON syncing. | [5h] |
-| [18.08.2026] | Step 5 (In progress): Sort and Filter functions | [5] |
+| Date         | Development Phase / Tasks Completed                                                                     | Hours Spent |
+|--------------|---------------------------------------------------------------------------------------------------------|-------------|
+| 11.08.2026   | Pre-Start: Decide the project theme. Create github repository to track the project. Create class Diagram and flowchart. | 3h          |
+| 13.08.2026   | Pre-Start: Figma UI/UX prototyping and blueprint creation                                               | 5h          |
+| 13.08.2026   | Step 1: Initial form setup, JSON storage integration, and data binding                                  | 6h          |
+| 14.08.2026   | Step 4 (Partial): Directory management anchoring and table readability polish                           | 4h          |
+| 17.08.2026   | Step 4 (Partial): ThemeManager OOP class creation                                                       | 3h        |
+| 18.08.2026   | Step 4 & Step 2 (Completed): Dark Mode toggle finalization, embedded grid icons, and Edit/Delete JSON syncing. | 5h        |
+| 18.08.2026   | Step 3 (Completed):ContextMenuStrip filtering, and LINQ sorting. | 5h        |
