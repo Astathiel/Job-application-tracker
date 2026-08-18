@@ -56,6 +56,15 @@ namespace JobApplicationTracker
                 }
             }
 
+            if (this.Controls.ContainsKey("btnFilter"))
+            {
+                btnFilter.FlatStyle = FlatStyle.Flat;
+                btnFilter.FlatAppearance.BorderSize = 1;
+                btnFilter.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+                btnFilter.Cursor = Cursors.Hand;
+                btnFilter.Click += btnFilter_Click;
+            }
+
             // Set properties for the Save button
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.FlatAppearance.BorderSize = 0;
@@ -136,19 +145,61 @@ namespace JobApplicationTracker
         }
 
         private void InitializeFilterMenu()
-        { 
+        {
             filterMenu = new ContextMenuStrip();
             filterMenu.Font = new Font("Segoe UI", 9.5F);
 
-            string[] statuses = { "Applied", "Interviewing", "Offered", "Rejected" };
-
+            // 1. Status Filters Category
+            ToolStripMenuItem statusMenu = new ToolStripMenuItem("Filter by Status");
+            string[] statuses = { "Applied", "Pending", "Interview", "Offer", "Rejected" };
             foreach (string status in statuses)
-            { 
+            {
                 ToolStripMenuItem item = new ToolStripMenuItem(status);
                 item.CheckOnClick = true;
                 item.CheckedChanged += FilterItem_CheckedChanged;
-                filterMenu.Items.Add(item);
+                statusMenu.DropDownItems.Add(item);
             }
+            filterMenu.Items.Add(statusMenu);
+
+            // Work Model Filters Category
+            ToolStripMenuItem modelMenu = new ToolStripMenuItem("Filter by Work Model");
+            string[] models = { "Remote", "Hybrid", "On-site" };
+            foreach (string model in models)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem(model);
+                item.CheckOnClick = true;
+                item.CheckedChanged += FilterItem_CheckedChanged;
+                modelMenu.DropDownItems.Add(item);
+            }
+            filterMenu.Items.Add(modelMenu);
+
+            // 3. Clear Filters Button
+            filterMenu.Items.Add(new ToolStripSeparator());
+            ToolStripMenuItem clearItem = new ToolStripMenuItem("Clear All Filters");
+            clearItem.Click += (s, e) => { ClearAllFilters(); };
+            filterMenu.Items.Add(clearItem);
+        }
+
+        private void ClearAllFilters()
+        {
+            // Iterate through main menu categories (Status, Work Model)
+            foreach (ToolStripItem mainItem in filterMenu.Items)
+            {
+                if (mainItem is ToolStripMenuItem categoryMenu && categoryMenu.HasDropDownItems)
+                {
+                    // Iterate through and uncheck all sub-items
+                    foreach (ToolStripItem subItem in categoryMenu.DropDownItems)
+                    {
+                        if (subItem is ToolStripMenuItem checkableItem)
+                        {
+                            checkableItem.CheckedChanged -= FilterItem_CheckedChanged;
+                            checkableItem.Checked = false;
+                            checkableItem.CheckedChanged += FilterItem_CheckedChanged;
+                        }
+                    }
+                }
+            }
+            RefreshGrid();
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -157,7 +208,28 @@ namespace JobApplicationTracker
         }
 
         private void FilterItem_CheckedChanged(object sender, EventArgs e)
-        { 
+        {
+            ToolStripMenuItem checkedItem = sender as ToolStripMenuItem;
+
+            // If the user just checked an item, force all other items in that specific sub-menu to uncheck
+            if (checkedItem != null && checkedItem.Checked)
+            {
+                ToolStripDropDownItem parentMenu = checkedItem.OwnerItem as ToolStripDropDownItem;
+                if (parentMenu != null)
+                {
+                    foreach (ToolStripItem otherItem in parentMenu.DropDownItems)
+                    {
+                        if (otherItem is ToolStripMenuItem menuItem && menuItem != checkedItem)
+                        {
+                            // Temporarily detach the event to prevent an infinite loop of refreshes
+                            menuItem.CheckedChanged -= FilterItem_CheckedChanged;
+                            menuItem.Checked = false;
+                            menuItem.CheckedChanged += FilterItem_CheckedChanged;
+                        }
+                    }
+                }
+            }
+
             RefreshGrid();
         }
 
@@ -254,9 +326,68 @@ namespace JobApplicationTracker
         // Method to refresh the DataGridView with the current list of job applications
         private void RefreshGrid()
         {
+            string activeStatus = "";
+            string activeModel = "";
+
+            // 1. Find which filters are checked in the background
+            if (filterMenu != null && filterMenu.Items.Count >= 2)
+            {
+                // Extract checked Status
+                if (filterMenu.Items[0] is ToolStripMenuItem statusMenu)
+                {
+                    foreach (ToolStripMenuItem item in statusMenu.DropDownItems)
+                    {
+                        if (item.Checked) activeStatus = item.Text.ToUpper();
+                    }
+                }
+
+                // Extract checked Work Model
+                if (filterMenu.Items[1] is ToolStripMenuItem modelMenu)
+                {
+                    foreach (ToolStripMenuItem item in modelMenu.DropDownItems)
+                    {
+                        if (item.Checked) activeModel = item.Text.ToUpper();
+                    }
+                }
+            }
+
+            // 2. Start with the full Vault list
+            List<JobApplication> viewList = new List<JobApplication>(applications);
+
+            // 3. Apply Status Filter (If one is active)
+            if (!string.IsNullOrEmpty(activeStatus))
+            {
+                viewList = viewList.Where(app => !string.IsNullOrEmpty(app.Status) && app.Status.Trim().ToUpper() == activeStatus).ToList();
+            }
+
+            // 4. Apply Work Model Filter (If one is active)
+            if (!string.IsNullOrEmpty(activeModel))
+            {
+                viewList = viewList.Where(app => !string.IsNullOrEmpty(app.WorkModel) && app.WorkModel.Trim().ToUpper() == activeModel).ToList();
+            }
+
+            // 5. Apply Sorting (Clicking Column Headers)
+            if (!string.IsNullOrEmpty(sortColumn))
+            {
+                var propertyInfo = typeof(JobApplication).GetProperty(sortColumn);
+                if (propertyInfo != null)
+                {
+                    if (sortAscending)
+                    {
+                        viewList = viewList.OrderBy(app => propertyInfo.GetValue(app, null)).ToList();
+                    }
+                    else
+                    {
+                        viewList = viewList.OrderByDescending(app => propertyInfo.GetValue(app, null)).ToList();
+                    }
+                }
+            }
+
+            // 6. Push to Grid
             dgvApplications.DataSource = null;
-            dgvApplications.DataSource = applications;
-            lblTotalCount.Text = $"{applications.Count} Applications Total";
+            dgvApplications.DataSource = viewList;
+
+            lblTotalCount.Text = $"{viewList.Count} Applications Shown ({applications.Count} Total)";
         }
 
         // Method to clear the input fields in the form1 after saving a job application
