@@ -46,6 +46,7 @@
             label1 = new Label();
             txtCompanyName = new TextBox();
             btnThemeToggle = new Button();
+            btnFilter = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvApplications).BeginInit();
             SuspendLayout();
             // 
@@ -219,11 +220,21 @@
             btnThemeToggle.TabIndex = 18;
             btnThemeToggle.UseVisualStyleBackColor = true;
             // 
+            // btnFilter
+            // 
+            btnFilter.Location = new Point(585, 132);
+            btnFilter.Name = "btnFilter";
+            btnFilter.Size = new Size(112, 34);
+            btnFilter.TabIndex = 19;
+            btnFilter.Text = "Filter";
+            btnFilter.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1259, 663);
+            Controls.Add(btnFilter);
             Controls.Add(btnThemeToggle);
             Controls.Add(txtCompanyName);
             Controls.Add(label1);
@@ -269,5 +280,6 @@
         private Label label1;
         private TextBox txtCompanyName;
         private Button btnThemeToggle;
+        private Button btnFilter;
     }
 }
