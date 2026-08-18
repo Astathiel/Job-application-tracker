@@ -9,13 +9,18 @@ namespace JobApplicationTracker
     // Main Form for the Job Application Tracker
     public partial class Form1 : Form
     {
+
         private List<JobApplication> applications;
+        private ContextMenuStrip filterMenu;
+        private string sortColumn = "";
+        private bool sortAscending = true;
 
         public Form1()
         {
             // Initialize the form components, load json data, and apply modern styles
             InitializeComponent();
             ApplyModernStyles();
+            InitializeFilterMenu();
             // Apply initial default theme(light mode)
             ThemeManager.ApplyTheme(this);
             LoadData();
@@ -128,6 +133,51 @@ namespace JobApplicationTracker
 
             dgvApplications.CellContentClick -= dgvApplications_CellContentClick;
             dgvApplications.CellContentClick += dgvApplications_CellContentClick;
+        }
+
+        private void InitializeFilterMenu()
+        { 
+            filterMenu = new ContextMenuStrip();
+            filterMenu.Font = new Font("Segoe UI", 9.5F);
+
+            string[] statuses = { "Applied", "Interviewing", "Offered", "Rejected" };
+
+            foreach (string status in statuses)
+            { 
+                ToolStripMenuItem item = new ToolStripMenuItem(status);
+                item.CheckOnClick = true;
+                item.CheckedChanged += FilterItem_CheckedChanged;
+                filterMenu.Items.Add(item);
+            }
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            filterMenu.Show(btnFilter, new Point(0, btnFilter.Height));
+        }
+
+        private void FilterItem_CheckedChanged(object sender, EventArgs e)
+        { 
+            RefreshGrid();
+        }
+
+        private void DgvApplications_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string clickedColumn = dgvApplications.Columns[e.ColumnIndex].DataPropertyName;
+
+            if (string.IsNullOrEmpty(clickedColumn)) return;
+
+            if (sortColumn == clickedColumn)
+            {
+                sortAscending = !sortAscending;
+            }
+            else
+            {
+                sortColumn = clickedColumn;
+                sortAscending = true;
+            }
+
+            RefreshGrid();
         }
 
         private void dgvApplications_CellContentClick(object sender, DataGridViewCellEventArgs e)
