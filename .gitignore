@@ -1,6 +1,9 @@
-/classDiagram.png
-/flowchart.png
-/bin
-/obj
+bin/
+obj/
 .vs/
-/JobApplicationTracker/JobApplicationTracker/bin/Debug/net8.0-windows/Applications
+*.user
+*.suo
+Applications/
+data.json
+classDiagram.png
+flowchart.png
