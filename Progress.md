@@ -37,7 +37,7 @@ A Windows Forms desktop application designed to track job applications using a m
 
 ## Time Investment Log
 
-**Total Time Spent:** [18] hours
+**Total Time Spent:** [23] hours
 
 | Date         | Development Phase / Tasks Completed                                     | Hours Spent |
 |--------------|-------------------------------------------------------------------------|-------------|
