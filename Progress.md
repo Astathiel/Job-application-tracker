@@ -17,7 +17,7 @@ A Windows Forms desktop application designed to track job applications using a m
 * **Data Binding:** Connected the frontend inputs to the backend logic, allowing the application to save new entries to the JSON file, load existing entries on startup, and refresh the UI ledger.
 * **Window Title:** Updated the main application window title to reflect the project name.
 
-### Step 2: Modification & Deletion (Pending)
+### Step 2: Modification & Deletion (Completed)
 * **UI Integration:** Programmatically inject flat, styled "Edit" and "Delete" button columns directly into the data table rows.
 * **State Memory:** Introduce a tracking variable to the form to remember if the user is currently updating an existing application or creating a brand new one.
 * **Event Logic:** Wire up a cell-click event so that clicking "Delete" removes the entry and rewrites the JSON, while clicking "Edit" pulls the row's data back into the top input fields for modification.
