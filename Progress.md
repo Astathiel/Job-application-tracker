@@ -33,17 +33,13 @@ A Windows Forms desktop application designed to track job applications using a m
 
 ## Time Investment Log
 
-**Total Time Spent:** [Total Hours] hours
-
-## Time Investment Log
-
-**Total Time Spent:** [18] hours
+**Total Time Spent:** [26] hours
 
 | Date         | Development Phase / Tasks Completed                                     | Hours Spent |
 |--------------|-------------------------------------------------------------------------|-------------|
-| [11.08.2026] | Pre-Start: Decide the project theme. Create github repository to track the project. Create class Diagram
-                 and flowchart. | [3h] |
+| [11.08.2026] | Pre-Start: Decide the project theme. Create github repository to track the project. Create class Diagram and flowchart.                                     |     [3h]    |
 | [13.08.2026] | Pre-Start: Figma UI/UX prototyping and blueprint creation | [5h] |
 | [13.08.2026] | Step 1: Initial form setup, JSON storage integration, and data binding | [6h] |
-| [14.08.2026] | Step 4 (Partial): Directory management anchoring and table readability polish | [4] |
-| [17.08.2026] | Step 4 (Partial): ThemeManager OOP class creation | [X.X] |
+| [14.08.2026] | Step 4 (Partial): Directory management anchoring and table readability polish | [4h] |
+| [17.08.2026] | Step 4 (Partial): ThemeManager OOP class creation | [3h] |
+| [18.08.2026] | Step 4 (Completed): Dark Mode toggle finalization, embedded grid icons, and Edit/Delete JSON syncing. | [5h] |

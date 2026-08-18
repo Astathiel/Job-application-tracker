@@ -9,7 +9,6 @@ namespace JobApplicationTracker
     // Main Form for the Job Application Tracker
     public partial class Form1 : Form
     {
-        // List to hold the job applications in memory
         private List<JobApplication> applications;
 
         public Form1()
@@ -35,11 +34,9 @@ namespace JobApplicationTracker
             txtJobTitle.PlaceholderText = "e.g. Junior Developer";
             txtLocation.PlaceholderText = "e.g. Tampere, Helsinki or Remote";
 
-            
             btnThemeToggle.Text = "";
             btnThemeToggle.ImageAlign = ContentAlignment.MiddleCenter;
             btnThemeToggle.Cursor = Cursors.Hand;
-
 
             // iterate through all controls in the form and apply styles based on their type
             foreach (Control control in this.Controls)
@@ -60,12 +57,14 @@ namespace JobApplicationTracker
             btnSave.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnSave.Cursor = Cursors.Hand;
 
+
             // Set properties for the DataGridView to make it look clean
             dgvApplications.EnableHeadersVisualStyles = false;
             dgvApplications.BorderStyle = BorderStyle.None;
             dgvApplications.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvApplications.RowHeadersVisible = false;
             dgvApplications.AllowUserToResizeRows = false;
+            dgvApplications.AllowUserToOrderColumns = false;
             dgvApplications.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvApplications.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -73,8 +72,92 @@ namespace JobApplicationTracker
             dgvApplications.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvApplications.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             dgvApplications.ColumnHeadersHeight = 40;
-
             dgvApplications.RowTemplate.Height = 40;
+
+            dgvApplications.ColumnHeadersDefaultCellStyle.SelectionBackColor = dgvApplications.ColumnHeadersDefaultCellStyle.BackColor;
+            dgvApplications.ColumnHeadersDefaultCellStyle.SelectionForeColor = dgvApplications.ColumnHeadersDefaultCellStyle.ForeColor;
+
+            dgvApplications.AutoGenerateColumns = false;
+            dgvApplications.Columns.Clear();
+
+            DataGridViewTextBoxColumn colCompany = new DataGridViewTextBoxColumn();
+            colCompany.DataPropertyName = "CompanyName";
+            colCompany.HeaderText = "Company Name";
+            dgvApplications.Columns.Add(colCompany);
+
+            DataGridViewTextBoxColumn colTitle = new DataGridViewTextBoxColumn();
+            colTitle.DataPropertyName = "JobTitle";
+            colTitle.HeaderText = "Role / Title";
+            dgvApplications.Columns.Add(colTitle);
+
+            DataGridViewTextBoxColumn colLocation = new DataGridViewTextBoxColumn();
+            colLocation.DataPropertyName = "Location";
+            colLocation.HeaderText = "Location";
+            dgvApplications.Columns.Add(colLocation);
+
+            DataGridViewTextBoxColumn colMethod = new DataGridViewTextBoxColumn();
+            colMethod.DataPropertyName = "WorkModel";
+            colMethod.HeaderText = "Working Method";
+            dgvApplications.Columns.Add(colMethod);
+
+            DataGridViewTextBoxColumn colDate = new DataGridViewTextBoxColumn();
+            colDate.DataPropertyName = "ApplicationDate";
+            colDate.HeaderText = "Date";
+            dgvApplications.Columns.Add(colDate);
+
+            DataGridViewTextBoxColumn colStatus = new DataGridViewTextBoxColumn();
+            colStatus.DataPropertyName = "Status";
+            colStatus.HeaderText = "Status";
+            dgvApplications.Columns.Add(colStatus);
+
+            DataGridViewImageColumn editCol = new DataGridViewImageColumn();
+            editCol.Name = "EditColumn";
+            editCol.HeaderText = "";
+            editCol.Width = 35;
+            editCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            editCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            dgvApplications.Columns.Add(editCol);
+
+            DataGridViewImageColumn delCol = new DataGridViewImageColumn();
+            delCol.Name = "DeleteColumn";
+            delCol.HeaderText = "";
+            delCol.Width = 35;
+            delCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            delCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            dgvApplications.Columns.Add(delCol);
+
+            dgvApplications.CellContentClick -= dgvApplications_CellContentClick;
+            dgvApplications.CellContentClick += dgvApplications_CellContentClick;
+        }
+
+        private void dgvApplications_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                string colName = dgvApplications.Columns[e.ColumnIndex].Name;
+
+                if (colName == "DeleteColumn" || colName == "EditColumn")
+                {
+                    var app = dgvApplications.Rows[e.RowIndex].DataBoundItem as JobApplication;
+
+                    if (app != null)
+                    {
+                        if (colName == "EditColumn")
+                        {
+                            txtCompanyName.Text = app.CompanyName;
+                            txtJobTitle.Text = app.JobTitle;
+                            txtLocation.Text = app.Location;
+                            cmbWorkModel.Text = app.WorkModel;
+                            cmbStatus.Text = app.Status;
+                            dtpApplicationDate.Value = app.ApplicationDate;
+                        }
+
+                        applications.Remove(app);
+                        DataManager.SaveApplications(applications);
+                        RefreshGrid();
+                    }
+                }
+            }
         }
 
         private void BtnThemeToggle_Click(object sender, EventArgs e)
@@ -124,17 +207,6 @@ namespace JobApplicationTracker
             dgvApplications.DataSource = null;
             dgvApplications.DataSource = applications;
             lblTotalCount.Text = $"{applications.Count} Applications Total";
-
-            // Set the column headers for better readability
-            if (dgvApplications.Columns["CompanyName"] != null)
-            {
-                dgvApplications.Columns["CompanyName"].HeaderText = "Company Name";
-                dgvApplications.Columns["JobTitle"].HeaderText = "Role / Title";
-                dgvApplications.Columns["Location"].HeaderText = "Location";
-                dgvApplications.Columns["WorkModel"].HeaderText = "Working Method";
-                dgvApplications.Columns["ApplicationDate"].HeaderText = "Date";
-                dgvApplications.Columns["Status"].HeaderText = "Status";
-            }
         }
 
         // Method to clear the input fields in the form1 after saving a job application

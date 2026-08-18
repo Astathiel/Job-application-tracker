@@ -9,11 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Dark_Delete.png" />
+    <None Remove="Assets\Dark_Pencil.png" />
+    <None Remove="Assets\Light_Delete.png" />
+    <None Remove="Assets\Light_Pencil.png" />
     <None Remove="Assets\ToggleDark.png" />
     <None Remove="Assets\ToggleLight.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Assets\Dark_Delete.png" />
+    <EmbeddedResource Include="Assets\Dark_Pencil.png" />
+    <EmbeddedResource Include="Assets\Light_Delete.png" />
+    <EmbeddedResource Include="Assets\Light_Pencil.png" />
     <EmbeddedResource Include="Assets\ToggleDark.png" />
     <EmbeddedResource Include="Assets\ToggleLight.png" />
   </ItemGroup>

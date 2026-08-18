@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
-using System.Windows.Forms;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
 // Necessary Libraries
 
 namespace JobApplicationTracker
@@ -16,21 +13,36 @@ namespace JobApplicationTracker
         // Property to track the current theme mode (dark or light)
         public static bool IsDarkMode { get; private set; } = false;
 
+        // Images for the theme toggle button and edit button in both dark and light modes
         private static Image imgDark;
         private static Image imgLight;
 
+        private static Image imgEditDark;
+        private static Image imgEditLight;
+
+        private static Image imgDeleteDark;
+        private static Image imgDeleteLight;
+
         static ThemeManager()
         {
-            // Load the embedded images for the theme toggle button
+            // Load images from embedded resources
             var assembly = Assembly.GetExecutingAssembly();
-
             string[] allResources = assembly.GetManifestResourceNames();
 
             string darkPath = allResources.FirstOrDefault(r => r.EndsWith("ToggleDark.png"));
             string lightPath = allResources.FirstOrDefault(r => r.EndsWith("ToggleLight.png"));
+            string editDarkPath = allResources.FirstOrDefault(r => r.EndsWith("Dark_Pencil.png"));
+            string editLightPath = allResources.FirstOrDefault(r => r.EndsWith("Light_Pencil.png"));
+            string delDarkPath = allResources.FirstOrDefault(r => r.EndsWith("Dark_Delete.png"));
+            string delLightPath = allResources.FirstOrDefault(r => r.EndsWith("Light_Delete.png"));
+
 
             if (darkPath != null) imgDark = Image.FromStream(assembly.GetManifestResourceStream(darkPath));
             if (lightPath != null) imgLight = Image.FromStream(assembly.GetManifestResourceStream(lightPath));
+            if (editDarkPath != null) imgEditDark = Image.FromStream(assembly.GetManifestResourceStream(editDarkPath));
+            if (editLightPath != null) imgEditLight = Image.FromStream(assembly.GetManifestResourceStream(editLightPath));
+            if (delDarkPath != null) imgDeleteDark = Image.FromStream(assembly.GetManifestResourceStream(delDarkPath));
+            if (delLightPath != null) imgDeleteLight = Image.FromStream(assembly.GetManifestResourceStream(delLightPath));
         }
 
         // Set the theme to opposite of the current mode (dark to light or light to dark)
@@ -80,8 +92,18 @@ namespace JobApplicationTracker
 
                     if (button.Name == "btnThemeToggle")
                     {
+                        // Set the theme toggle button's image based on the current theme
                         button.Image = null;
                         button.BackgroundImage = IsDarkMode ? imgDark : imgLight;
+                        button.BackgroundImageLayout = ImageLayout.Zoom;
+                        button.BackColor = backColor;
+                    }
+                    // Set the edit button's image based on the current theme
+                    else if (button.Name == "btnEdit")
+                    {
+                        button.Text = "";
+                        button.Image = null;
+                        button.BackgroundImage = IsDarkMode ? imgEditDark : imgEditLight;
                         button.BackgroundImageLayout = ImageLayout.Zoom;
                         button.BackColor = backColor;
                     }
@@ -98,6 +120,16 @@ namespace JobApplicationTracker
 
                     grid.ColumnHeadersDefaultCellStyle.BackColor = controlBackColor;
                     grid.ColumnHeadersDefaultCellStyle.ForeColor = foreColor;
+
+                    if (grid.Columns.Contains("EditColumn") && grid.Columns["EditColumn"] is DataGridViewImageColumn editCol)
+                    {
+                        editCol.Image = IsDarkMode ? imgEditDark : imgEditLight;
+                    }
+
+                    if (grid.Columns.Contains("DeleteColumn") && grid.Columns["DeleteColumn"] is DataGridViewImageColumn delCol)
+                    {
+                        delCol.Image = IsDarkMode ? imgDeleteDark : imgDeleteLight;
+                    }
                 }
             }
         }
