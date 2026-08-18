@@ -69,9 +69,13 @@ classDiagram
 ```
 
 ## Project steps
- 1. Visual Layout
-    - Build the UI.
- 3. Data Managment
-    - Convert C# data into JSON and save it to local hard drive.
- 5. Wiring the events
-    - Connect Forms buttons to the logic.
+ 1. Pre-Start & Design
+    - Conceptualized and designed the application layout using Figma to establish a minimalistic UI/UX blueprint.
+ 2. Step 1: Core Foundation & Data Persistence
+    - Built the user interface and implemented the C# `DataManager` to serialize and deserialize application data to a local `data.json` file.
+ 3. Step 2: Modification & Deletion
+    - Injected interactive edit and delete button columns into the data grid, wiring them up to sync state memory and update the local JSON file.
+ 4. Step 3: Data Organization
+    - Implemented non-destructive LINQ filtering via a custom dropdown menu and enabled programmatic column header clicking for sorting.
+ 5. Step 4: Layout Polish, Dark Mode & Directory Management
+    - Created an OOP-based `ThemeManager` for seamless Light and Dark mode toggling, automated directory anchoring for the database, and polished table readability.
