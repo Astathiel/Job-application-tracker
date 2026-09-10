@@ -15,6 +15,7 @@
     <None Remove="Assets\Light_Pencil.png" />
     <None Remove="Assets\ToggleDark.png" />
     <None Remove="Assets\ToggleLight.png" />
+    <None Remove="data.json" />
   </ItemGroup>
 
   <ItemGroup>

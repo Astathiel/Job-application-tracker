@@ -81,6 +81,7 @@ namespace JobApplicationTracker
             dgvApplications.AllowUserToOrderColumns = false;
             dgvApplications.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvApplications.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvApplications.ReadOnly = true;
 
             // Set the header style for the DataGridView
             dgvApplications.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -140,8 +141,9 @@ namespace JobApplicationTracker
             delCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
             dgvApplications.Columns.Add(delCol);
 
-            dgvApplications.CellContentClick -= dgvApplications_CellContentClick;
-            dgvApplications.CellContentClick += dgvApplications_CellContentClick;
+
+            dgvApplications.ColumnHeaderMouseClick -= DgvApplications_ColumnHeaderMouseClick;
+            dgvApplications.ColumnHeaderMouseClick += DgvApplications_ColumnHeaderMouseClick;
         }
 
         private void InitializeFilterMenu()
