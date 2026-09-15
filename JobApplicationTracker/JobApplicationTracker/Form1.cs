@@ -144,7 +144,11 @@ namespace JobApplicationTracker
 
             dgvApplications.ColumnHeaderMouseClick -= DgvApplications_ColumnHeaderMouseClick;
             dgvApplications.ColumnHeaderMouseClick += DgvApplications_ColumnHeaderMouseClick;
+
+            dgvApplications.CellClick -= dgvApplications_CellContentClick;
+            dgvApplications.CellClick += dgvApplications_CellContentClick;
         }
+
 
         private void InitializeFilterMenu()
         {
